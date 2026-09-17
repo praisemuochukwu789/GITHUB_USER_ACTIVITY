@@ -5,8 +5,6 @@ Create a file named `README.md` in your project folder, paste this into it, and 
 ```markdown
 # GitHub Activity CLI
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-
 A simple, lightweight command-line tool written in Python that fetches and summarizes a user's recent public GitHub activity—categorizing pushes and repository creations cleanly without the clutter.
 
 ## Features
