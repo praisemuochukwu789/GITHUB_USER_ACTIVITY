@@ -13,10 +13,10 @@ username = sys.argv[1]
 url = f"https://api.github.com/users/{username}/events"
 
 # GitHub requires a User-Agent header, otherwise it blocks default requests
-req = urllib.request.Request(url, headers={"User-Agent": "Python-CLI-App"})
+request = urllib.request.Request(url, headers={"User-Agent": "Python-CLI-App"})
 
 try:
-  with urllib.request.urlopen(req) as response:
+  with urllib.request.urlopen(request) as response:
     # Read the raw bytes, decode to string, and parse into Python data
     data = json.loads(response.read().decode("utf-8"))
     print(f"Successfully fetched {len(data)} events!")
@@ -49,11 +49,11 @@ try:
       for repo_name, create_count in repo_create_counts.items():
         print(f"- Created {create_count} new item(s) in {repo_name}")
 
-except HTTPError as e:
+except HTTPError as error:
     # Catches explicit server responses like 404 Not Found or 500 Server Error
-    print(f"HTTP Error code: {e.code}")
-except URLError as e:
+    print(f"HTTP Error code: {error.code}")
+except URLError as error:
     # Catches low-level failures, like failing to connect to the internet entirely
-    print(f"Failed to reach the server. Reason: {e.reason}")
-except Exception as e:
-  print(f"An error occurred: {e}")
+    print(f"Failed to reach the server. Reason: {error.reason}")
+except Exception as error:
+  print(f"An error occurred: {error}")
